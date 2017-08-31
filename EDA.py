@@ -189,11 +189,81 @@ ax.set_ylim(lat_border)
 
 
 ####### Temporal data and geospatical data aggregation
-#### save for later
+#### average_speed_h_pickup_cluster_dropoff_cluster_pickup_hour
+# first build average haversine speed on train
+train["trip_speed_h"] = (1000 * train.haversine / train.trip_duration).round(2)  # unit is m/s
+gby_cols_list = [[ "pickup_cluster", "dropoff_cluster"]]
+for gby_cols in gby_cols_list:
+    df_grouped_mean = train.groupby(gby_cols).mean()[["trip_speed_h"]]
+    df_grouped_mean.columns = ["avg_speed_h_%s" % ("_".join(gby_cols))]
+    train = pd.merge(train, df_grouped_mean, how = "left", left_on = gby_cols, right_index = True)
+    test = pd.merge(test, df_grouped_mean, how = "left", left_on = gby_cols, right_index = True)
+## there are alot 10k nan in test data
+
+#_________________________________________________________________________
+########################3 following aggregation feature come from beluga
+group_freq = '60min'
+df_all = pd.concat((train, test))[['id', 'pickup_datetime', 'pickup_cluster', 'dropoff_cluster']]
+train.loc[:, 'pickup_datetime_group'] = train['pickup_datetime'].dt.round(group_freq)
+test.loc[:, 'pickup_datetime_group'] = test['pickup_datetime'].dt.round(group_freq)
+
+# Count trips over 60min
+df_counts = df_all.set_index('pickup_datetime')[['id']].sort_index()
+df_counts['count_60min'] = df_counts.isnull().rolling(group_freq).count()['id']
+train = train.merge(df_counts, on='id', how='left')
+test = test.merge(df_counts, on='id', how='left')
+
+# Count how many trips are going to each cluster over time
+dropoff_counts = df_all \
+    .set_index('pickup_datetime') \
+    .groupby([pd.TimeGrouper(group_freq), 'dropoff_cluster']) \
+    .agg({'id': 'count'}) \
+    .reset_index().set_index('pickup_datetime') \
+    .groupby('dropoff_cluster').rolling('240min').mean() \
+    .drop('dropoff_cluster', axis=1) \
+    .reset_index().set_index('pickup_datetime').shift(freq='-120min').reset_index() \
+    .rename(columns={'pickup_datetime': 'pickup_datetime_group', 'id': 'dropoff_cluster_count'})
+
+train['dropoff_cluster_count'] = train[['pickup_datetime_group', 'dropoff_cluster']].merge(dropoff_counts, on=['pickup_datetime_group', 'dropoff_cluster'], how='left')['dropoff_cluster_count'].fillna(0)
+test['dropoff_cluster_count'] = test[['pickup_datetime_group', 'dropoff_cluster']].merge(dropoff_counts, on=['pickup_datetime_group', 'dropoff_cluster'], how='left')['dropoff_cluster_count'].fillna(0)
+
+# Count how many trips are going from each cluster over time
+df_all = pd.concat((train, test))[['id', 'pickup_datetime', 'pickup_cluster', 'dropoff_cluster']]
+pickup_counts = df_all \
+    .set_index('pickup_datetime') \
+    .groupby([pd.TimeGrouper(group_freq), 'pickup_cluster']) \
+    .agg({'id': 'count'}) \
+    .reset_index().set_index('pickup_datetime') \
+    .groupby('pickup_cluster').rolling('240min').mean() \
+    .drop('pickup_cluster', axis=1) \
+    .reset_index().set_index('pickup_datetime').shift(freq='-120min').reset_index() \
+    .rename(columns={'pickup_datetime': 'pickup_datetime_group', 'id': 'pickup_cluster_count'})
+
+train['pickup_cluster_count'] = train[['pickup_datetime_group', 'pickup_cluster']].merge(pickup_counts, on=['pickup_datetime_group', 'pickup_cluster'], how='left')['pickup_cluster_count'].fillna(0)
+test['pickup_cluster_count'] = test[['pickup_datetime_group', 'pickup_cluster']].merge(pickup_counts, on=['pickup_datetime_group', 'pickup_cluster'], how='left')['pickup_cluster_count'].fillna(0)
+#_________________________________________________________________________
+
+
+
+
+######### add OSRM Features (scr: https://www.kaggle.com/oscarleo/new-york-city-taxi-with-osrm)
+t0 = dt.datetime.now()
+fr1 = pd.read_csv(os.path.join('data', 'fastest_routes_train_part_1.csv'), usecols=['id', 'total_distance', 'total_travel_time',  'number_of_steps'])
+fr2 = pd.read_csv(os.path.join('data', 'fastest_routes_train_part_2.csv'), usecols=['id', 'total_distance', 'total_travel_time', 'number_of_steps'])
+test_street_info = pd.read_csv(os.path.join('data', 'fastest_routes_test.csv'),
+                               usecols=['id', 'total_distance', 'total_travel_time', 'number_of_steps'])
+train_street_info = pd.concat((fr1, fr2))
+train = train.merge(train_street_info, how='left', on='id')
+test = test.merge(test_street_info, how='left', on='id')
+t1 = dt.datetime.now()
+print("Loading OSRM Features cost {} seconds".format((t1-t0).seconds))
+
 
 ####check the features
 features = list(train.columns)
-non_features = ["id", "pickup_datetime", "dropoff_datetime", "check_trip_duration", "trip_duration", "store_and_fwd_flag", "pickup_date"]
+non_features = ["id", "pickup_datetime", "dropoff_datetime", 
+                "check_trip_duration", "trip_duration", "store_and_fwd_flag", 
+                "pickup_date", "trip_speed_h", 'pickup_datetime_group']
 features = [i for i in features if i not in non_features]
 print('We have %d features.' % len(features))
 
@@ -221,7 +291,7 @@ xgb_pars = {'min_child_weight': 50, 'eta': 0.3, 'colsample_bytree': 0.3, 'max_de
             'subsample': 0.8, 'lambda': 1., 'nthread': -1, 'booster' : 'gbtree', 'silent': 1,
             'eval_metric': 'rmse', 'objective': 'reg:linear'}
 xgb_model = xgb.train(xgb_pars, dtrain, num_boost_round = 60, 
-                      evals=watchlist, early_stopping_rounds = 50, 
+                      evals=watchlist, early_stopping_rounds = 80, 
                       maximize=False, verbose_eval=10)
 t1 = dt.datetime.now()
 print("Training the model costs {}".format((t1-t0).seconds))
@@ -231,8 +301,28 @@ ytest =xgb_model.predict(dtest)
 print("shape is okay") if len(ytest) == test.shape[0] else "oops"
 test["trip_duration"] = np.exp(ytest) - 1
 
-fit, axes = plt.subplots(2, 1)
+fit, axes = plt.subplots(2, 1, sharex = True, sharey = True)
 sns.distplot(yvalid, ax = axes[0])
 sns.distplot(ytest, ax = axes[1])
 
-test[["id", "trip_duration"]].to_csv("bz_xgb_submission.csv.gz", index = False, compression = "gzip")
+test[["id", "trip_duration"]].to_csv("xgb_submission.csv.gz", index = False, compression = "gzip")
+
+### plot the boosted tree.
+#import graphviz
+#ax = xgb.plot_tree(xgb_model)
+#fig = ax.figure
+#fig.set_size_inches(70, 30)
+#fig.savefig("tree.png")
+
+
+
+
+
+
+
+
+
+
+
+
+
