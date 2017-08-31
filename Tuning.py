@@ -280,7 +280,7 @@ xgb_param = {'min_child_weight': 50,
 #t1 = dt.datetime.now()
 #print("Grid Search 1 costs {} seconds".format((t1-t0).seconds))
 
-def xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, early_stopping_rounds = 10, num_boost_round = 160, verbose_eval = 20, random = False):
+def xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, early_stopping_rounds = 10, num_boost_round = 250, verbose_eval = 20, random = False):
     def translate(param_grid):
         '''
         type: dict: {'f1': [v1, v2, v3], 'f2': [v4, v5]}
@@ -302,7 +302,7 @@ def xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, early_stopping_roun
     print("GridSearch Required Tests: {}. ".format(len(comb_list)), "\nStart......")
     T0 = dt.datetime.now()
     for comb in comb_list:
-        i += 1; print("Testing {}th test...{}".format(i, comb), end="")
+        i += 1; print("Testing {}th test...{}".format(i, comb))
         t0 = dt.datetime.now()
         xgb_param.update(comb)
         xgb_model = xgb.train(xgb_param, 
