@@ -209,18 +209,18 @@ watchlist = [(dtrain, 'train'), (dvalid, 'valid')]
 ##### citation, following code is from beluga.
 # Try different parameters! My favorite is random search :)
 t0 = dt.datetime.now()
-xgb_params = {'min_child_weight': 50,
-              'eta': 0.3, 
-              'colsample_bytree': 0.5, 
-              'max_depth': 10,
+xgb_params = {'min_child_weight': 10,
+              'eta': 0.05, 
+              'colsample_bytree': 0.8, 
+              'max_depth': 15,
             'subsample': 0.8, 
             'lambda': 1., 
             'booster' : 'gbtree', 
             'silent': 1,
             'eval_metric': 'rmse', 
             'objective': 'reg:linear'}
-xgb_model = xgb.train(xgb_params, dtrain, num_boost_round = 150, 
-                       evals=watchlist, early_stopping_rounds = 130, 
+xgb_model = xgb.train(xgb_params, dtrain, num_boost_round = 2000, 
+                       evals=watchlist, early_stopping_rounds = 10, 
                        maximize=False, verbose_eval=10)
 t1 = dt.datetime.now()
 print("Training the model costs {} minutes".format((t1-t0).seconds//60))
