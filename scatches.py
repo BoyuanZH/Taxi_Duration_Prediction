@@ -25,5 +25,20 @@ def translate(param_grid):
 
 d = {str({'a': 1, 'b': 1}): 0.38, str({'a': 2, 'b': 2}): 0.48, str({'a': 3, 'b': 3}): 0.58}
 import pandas as pd;
-a = pd.Series(d).sort_values(ascending = False)
+a = pd.Series(d).sort_values(ascending = False).reset_index()
+a.columns = ['param', 'score']
+def to_df(scores):
+    '''
+    type: pd.DataFrame[param: [{"a":1, "b":2}, {"a":1, "b":2}], score = [0.3, 0.4]]
+    rtype: pd.DataFrame[columns: param + score]
+    '''
+    from ast import literal_eval
+    scores['param'] = list(map(literal_eval, scores['param']))
+    for key in scores['param'][0].keys():
+        scores[key] = list(map(lambda x: x[key], scores['param']))
+    return scores
+
+print(to_df(a))
+
+
 

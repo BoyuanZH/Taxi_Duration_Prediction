@@ -323,9 +323,20 @@ param_grid = {"eta": [0.05, 0.15, 0.3],
               "colsample_bytree": [0.3, 0.8, 1]}
 scores = xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, random = True)
 
-search_result = pd.Series(scores)
-    
-        
+search_result = pd.Series(scores).reset_index()
+search_result.columns = ["param", "score"]
+search_result.to_csv("search_result.csv", index = False)
+
+def score2df(scores):
+    '''
+    type: pd.DataFrame[param: [str({"a":1, "b":2}), str({"a":1, "b":2})], score = [0.3, 0.4]]
+    rtype: pd.DataFrame[columns: param + score]
+    '''
+    from ast import literal_eval
+    scores['param_dict'] = list(map(literal_eval, scores['param']))
+    for key in scores['param_dict'][0].keys():
+        scores[key] = list(map(lambda x: x[key], scores['param_dict']))
+    return scores
 
 
 

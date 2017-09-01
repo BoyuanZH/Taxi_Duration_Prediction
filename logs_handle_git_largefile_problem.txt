@@ -1,0 +1,472 @@
+Last login: Thu Aug 31 10:51:16 on ttys000
+ZhangBoyuansMBP:~ zhangboyuan$ cd ~/
+ZhangBoyuansMBP:~ zhangboyuan$ cd MyJekyllVM/
+ZhangBoyuansMBP:MyJekyllVM zhangboyuan$ cd MyWebsite/
+ZhangBoyuansMBP:MyWebsite zhangboyuan$ cd ~/
+ZhangBoyuansMBP:~ zhangboyuan$ cd Kaggle/
+ZhangBoyuansMBP:Kaggle zhangboyuan$ cd TaxiTripDurationPredict/
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   EDA.py
+	deleted:    bz_xgb_submission.csv.gz
+	deleted:    ipython.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	ModelRun.py
+	Tuning.py
+	data/fastest_routes_test.csv
+	data/fastest_routes_train_part_1.csv
+	data/fastest_routes_train_part_2.csv
+	scatches.py
+	tuning_gridsearch1.html
+	xgb_submission.csv.gz
+	xgboost_cv_example_fn.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git touch .gitignore
+git: 'touch' is not a git command. See 'git --help'.
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ touch .gitignore
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ vim .gitignore
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ vim .gitignore
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   EDA.py
+	deleted:    bz_xgb_submission.csv.gz
+	deleted:    ipython.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.gitignore
+	ModelRun.py
+	Tuning.py
+	scatches.py
+	tuning_gridsearch1.html
+	xgb_submission.csv.gz
+	xgboost_cv_example_fn.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git .a
+git: '.a' is not a git command. See 'git --help'.
+
+Did you mean one of these?
+	aa
+	ca
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add .
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git commit -a -m 'first commit'
+[master 0ebc76d] first commit
+ 10 files changed, 994 insertions(+), 611 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 ModelRun.py
+ create mode 100644 Tuning.py
+ delete mode 100644 bz_xgb_submission.csv.gz
+ delete mode 100644 ipython.html
+ create mode 100644 scatches.py
+ create mode 100644 tuning_gridsearch1.html
+ create mode 100644 xgb_submission.csv.gz
+ create mode 100644 xgboost_cv_example_fn.py
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git remote -v
+origin	https://github.com/BoyuanZH/NYTaxiTripPrediction.git (fetch)
+origin	https://github.com/BoyuanZH/NYTaxiTripPrediction.git (push)
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git push origin master
+Counting objects: 19, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (18/18), done.
+Writing objects: 100% (19/19), 98.53 MiB | 5.34 MiB/s, done.
+Total 19 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), done.
+remote: warning: File data/test.csv is 67.51 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: c188ddce16edc41cec960c62557b701e
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File data/train.csv is 191.30 MB; this exceeds GitHub's file size limit of 100.00 MB
+To https://github.com/BoyuanZH/NYTaxiTripPrediction.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/BoyuanZH/NYTaxiTripPrediction.git'
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+nothing to commit, working tree clean
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add .gitignore
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git commit -m 'first commit'
+On branch master
+nothing to commit, working tree clean
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ push -u origin master
+-bash: push: command not found
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git push -u origin master
+Counting objects: 19, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (18/18), done.
+Writing objects: 100% (19/19), 98.53 MiB | 4.27 MiB/s, done.
+Total 19 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), done.
+remote: warning: File data/test.csv is 67.51 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: 1d730083fa1a6fa43f72f162d2edcd72
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File data/train.csv is 191.30 MB; this exceeds GitHub's file size limit of 100.00 MB
+To https://github.com/BoyuanZH/NYTaxiTripPrediction.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/BoyuanZH/NYTaxiTripPrediction.git'
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch <file/dir>' HEAD
+Rewrite 55d36f572d45db716c054685f438749d35dd49cd (1/2) (0 seconds passed, remaining 0 predicted)    /usr/local/git/libexec/git-core/git-filter-branch: eval: line 371: syntax error near unexpected token `newline'
+/usr/local/git/libexec/git-core/git-filter-branch: eval: line 371: `git rm -r --cached --ignore-unmatch <file/dir>'
+index filter failed: git rm -r --cached --ignore-unmatch <file/dir>
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch <file/dir>' HEAD
+Rewrite 55d36f572d45db716c054685f438749d35dd49cd (1/2) (0 seconds passed, remaining 0 predicted)    /usr/local/git/libexec/git-core/git-filter-branch: eval: line 371: syntax error near unexpected token `newline'
+/usr/local/git/libexec/git-core/git-filter-branch: eval: line 371: `git rm -r --cached --ignore-unmatch <file/dir>'
+index filter failed: git rm -r --cached --ignore-unmatch <file/dir>
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git rm --cached giant_file
+fatal: pathspec 'giant_file' did not match any files
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git checkout -- data
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ reset HEAD^
+reset: can't initialize terminal type HEAD^ (error -1)
+Terminal type?  
+Terminal type? 
+Terminal type? git
+reset: can't initialize terminal type git (error -1)
+Terminal type? ^C
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+nothing to commit, working tree clean
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+nothing to commit, working tree clean
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git push -u origin master
+Counting objects: 19, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (18/18), done.
+Writing objects: 100% (19/19), 98.53 MiB | 5.16 MiB/s, done.
+Total 19 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), done.
+remote: warning: File data/test.csv is 67.51 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: 3bbea356b7b655672045fdecb507a72f
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File data/train.csv is 191.30 MB; this exceeds GitHub's file size limit of 100.00 MB
+To https://github.com/BoyuanZH/NYTaxiTripPrediction.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/BoyuanZH/NYTaxiTripPrediction.git'
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git remote set-url https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+usage: git remote set-url [--push] <name> <newurl> [<oldurl>]
+   or: git remote set-url --add <name> <newurl>
+   or: git remote set-url --delete <name> <url>
+
+    --push                manipulate push URLs
+    --add                 add URL
+    --delete              delete URLs
+
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git remote -v
+origin	https://github.com/BoyuanZH/NYTaxiTripPrediction.git (fetch)
+origin	https://github.com/BoyuanZH/NYTaxiTripPrediction.git (push)
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git remote set-url origin https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git remote -v
+origin	https://github.com/BoyuanZH/Taxi_Duration_Prediction.git (fetch)
+origin	https://github.com/BoyuanZH/Taxi_Duration_Prediction.git (push)
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+nothing to commit, working tree clean
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git rm -r --cached .
+rm '.gitignore'
+rm 'EDA.py'
+rm 'ModelRun.py'
+rm 'Tuning.py'
+rm 'data/sample_submission.csv'
+rm 'data/test.csv'
+rm 'data/train.csv'
+rm 'scatches.py'
+rm 'tuning_gridsearch1.html'
+rm 'xgb_submission.csv.gz'
+rm 'xgboost_cv_example_fn.py'
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	deleted:    .gitignore
+	deleted:    EDA.py
+	deleted:    ModelRun.py
+	deleted:    Tuning.py
+	deleted:    data/sample_submission.csv
+	deleted:    data/test.csv
+	deleted:    data/train.csv
+	deleted:    scatches.py
+	deleted:    tuning_gridsearch1.html
+	deleted:    xgb_submission.csv.gz
+	deleted:    xgboost_cv_example_fn.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.gitignore
+	EDA.py
+	ModelRun.py
+	Tuning.py
+	scatches.py
+	tuning_gridsearch1.html
+	xgb_submission.csv.gz
+	xgboost_cv_example_fn.py
+
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add .a
+fatal: pathspec '.a' did not match any files
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add .
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git commit -m ".gitignore is now working"
+[master 7441495] .gitignore is now working
+ 3 files changed, 2708915 deletions(-)
+ delete mode 100644 data/sample_submission.csv
+ delete mode 100644 data/test.csv
+ delete mode 100644 data/train.csv
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+nothing to commit, working tree clean
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git push origin master
+Counting objects: 21, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (20/20), done.
+Writing objects: 100% (21/21), 98.53 MiB | 4.50 MiB/s, done.
+Total 21 (delta 5), reused 0 (delta 0)
+remote: Resolving deltas: 100% (5/5), done.
+remote: warning: File data/test.csv is 67.51 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.
+remote: error: Trace: 254205d1aa8caca4e37339668061615a
+remote: error: See http://git.io/iEPt8g for more information.
+remote: error: File data/train.csv is 191.30 MB; this exceeds GitHub's file size limit of 100.00 MB
+To https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://github.com/BoyuanZH/Taxi_Duration_Prediction.git'
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git rm -r --cached .
+rm '.gitignore'
+rm 'EDA.py'
+rm 'ModelRun.py'
+rm 'Tuning.py'
+rm 'scatches.py'
+rm 'tuning_gridsearch1.html'
+rm 'xgb_submission.csv.gz'
+rm 'xgboost_cv_example_fn.py'
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add .
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git commit -m ".gitignore is now working"
+On branch master
+nothing to commit, working tree clean
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ bfg --strip-blobs-bigger-than 90M  my-repo.git
+-bash: bfg: command not found
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch e3384023be667de7529538b11c12ec68.201307290946.sql.gz' <sha1>..HEAD
+-bash: sha1: No such file or directory
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git filter-branch --index-filter 'git rm --cached --ignore-unmatch data/test.csv' <sha1>..HEAD
+-bash: sha1: No such file or directory
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ $ git filter-branch --force --index-filter \
+>   'git rm --cached --ignore-unmatch giant_file' \
+>   --prune-empty --tag-name-filter cat -- --all
+-bash: $: command not found
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch data/test.csv'
+Rewrite 55d36f572d45db716c054685f438749d35dd49cd (1/3) (0 seconds passed, remaining 0 predicted)    rm 'data/test.csv'
+Rewrite 0ebc76d078e8a161f45bd5c907e41c7d39f10122 (2/3) (0 seconds passed, remaining 0 predicted)    rm 'data/test.csv'
+Rewrite 74414950a67ece54ce5064e6fbdfc1f1aa266095 (3/3) (0 seconds passed, remaining 0 predicted)    
+Ref 'refs/heads/master' was rewritten
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch data/train.csv'
+Rewrite 03ea2e06fe6bc582d5c0247c3aa1457077a97382 (1/3) (0 seconds passed, remaining 0 predicted)    rm 'data/train.csv'
+Rewrite 9bf8c0e82f9c26ae49865a4448aaec9307011982 (2/3) (0 seconds passed, remaining 0 predicted)    rm 'data/train.csv'
+Rewrite cb7a51299c9b0fd323cb6b8aa42611ea791af91a (3/3) (0 seconds passed, remaining 0 predicted)    
+Ref 'refs/heads/master' was rewritten
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch data/fastest_routes_train_part_1.csv'
+Rewrite 68a4bf7f1f4d92ab4a15552f6c1c10b5c98f659d (3/3) (0 seconds passed, remaining 0 predicted)    
+WARNING: Ref 'refs/heads/master' is unchanged
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+nothing to commit, working tree clean
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git push origin master
+Counting objects: 19, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (17/17), done.
+Writing objects: 100% (19/19), 15.23 MiB | 7.65 MiB/s, done.
+Total 19 (delta 5), reused 0 (delta 0)
+remote: Resolving deltas: 100% (5/5), done.
+To https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+ * [new branch]      master -> master
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+nothing to commit, working tree clean
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git remote -v
+origin	https://github.com/BoyuanZH/Taxi_Duration_Prediction.git (fetch)
+origin	https://github.com/BoyuanZH/Taxi_Duration_Prediction.git (push)
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add .
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git commit -a -m 'update tuning.py'
+[master bdca9c6] update tuning.py
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 314 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+   68a4bf7..bdca9c6  master -> master
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ touch setup.sh
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ vim setup.sh
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ vim setup.sh
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	setup.sh
+
+nothing added to commit but untracked files present (use "git add" to track)
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git push origin master
+Everything up-to-date
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add .
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git commit -m "upload a bash file to setup a new compute engine"
+[master 1c8354e] upload a bash file to setup a new compute engine
+ 1 file changed, 23 insertions(+)
+ create mode 100644 setup.sh
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 653 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+   bdca9c6..1c8354e  master -> master
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	readme.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add . ; git commit "upload readme.md"; git push origin master
+error: pathspec 'upload readme.md' did not match any file(s) known to git.
+Everything up-to-date
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add .
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git commit -m "upload readme.md"
+[master 8f34ea8] upload readme.md
+ 1 file changed, 2 insertions(+)
+ create mode 100644 readme.md
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git push origin master
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 360 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+   1c8354e..8f34ea8  master -> master
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add . ; git commit -m "upload readme.md"; git push origin master
+[master dd3a36b] upload readme.md
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename readme.md => readme.markdown (100%)
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 239 bytes | 0 bytes/s, done.
+Total 2 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+   8f34ea8..dd3a36b  master -> master
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add . ; git commit -m "upload readme.md"; git push origin master
+[master 34bb497] upload readme.md
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+ rewrite readme.markdown (100%)
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 740 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+   dd3a36b..34bb497  master -> master
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add . ; git commit -m "upload readme.md"; git push origin master
+[master 6dbb59b] upload readme.md
+ 2 files changed, 612 insertions(+), 6 deletions(-)
+ create mode 100644 tuning_01_08_31.html
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 6.60 KiB | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+   34bb497..6dbb59b  master -> master
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ git add . ; git commit -m "upload readme.md"; git push origin master
+[master 66e9e95] upload readme.md
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 6.36 MiB | 590.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/BoyuanZH/Taxi_Duration_Prediction.git
+   6dbb59b..66e9e95  master -> master
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ script logs_for_handle_largefile_problem.txt
+Script started, output file is logs_for_handle_largefile_problem.txt
+bash-3.2$ exit()
+> 
+> 
+> quit()
+bash: syntax error near unexpected token `quit'
+bash-3.2$ help
+GNU bash, version 3.2.57(1)-release (x86_64-apple-darwin16)
+These shell commands are defined internally.  Type `help' to see this list.
+Type `help name' to find out more about the function `name'.
+Use `info bash' to find out more about the shell in general.
+Use `man -k' or `info' to find out more about commands not in this list.
+
+A star (*) next to a name means that the command is disabled.
+
+ JOB_SPEC [&]                       (( expression ))
+ . filename [arguments]             :
+ [ arg... ]                         [[ expression ]]
+ alias [-p] [name[=value] ... ]     bg [job_spec ...]
+ bind [-lpvsPVS] [-m keymap] [-f fi break [n]
+ builtin [shell-builtin [arg ...]]  caller [EXPR]
+ case WORD in [PATTERN [| PATTERN]. cd [-L|-P] [dir]
+ command [-pVv] command [arg ...]   compgen [-abcdefgjksuv] [-o option
+ complete [-abcdefgjksuv] [-pr] [-o continue [n]
+ declare [-afFirtx] [-p] [name[=val dirs [-clpv] [+N] [-N]
+ disown [-h] [-ar] [jobspec ...]    echo [-neE] [arg ...]
+ enable [-pnds] [-a] [-f filename]  eval [arg ...]
+ exec [-cl] [-a name] file [redirec exit [n]
+ export [-nf] [name[=value] ...] or false
+ fc [-e ename] [-nlr] [first] [last fg [job_spec]
+ for NAME [in WORDS ... ;] do COMMA for (( exp1; exp2; exp3 )); do COM
+ function NAME { COMMANDS ; } or NA getopts optstring name [arg]
+ hash [-lr] [-p pathname] [-dt] [na help [-s] [pattern ...]
+ history [-c] [-d offset] [n] or hi if COMMANDS; then COMMANDS; [ elif
+ jobs [-lnprs] [jobspec ...] or job kill [-s sigspec | -n signum | -si
+ let arg [arg ...]                  local name[=value] ...
+ logout                             popd [+N | -N] [-n]
+ printf [-v var] format [arguments] pushd [dir | +N | -N] [-n]
+ pwd [-LP]                          read [-ers] [-u fd] [-t timeout] [
+ readonly [-af] [name[=value] ...]  return [n]
+ select NAME [in WORDS ... ;] do CO set [--abefhkmnptuvxBCHP] [-o opti
+ shift [n]                          shopt [-pqsu] [-o long-option] opt
+ source filename [arguments]        suspend [-f]
+ test [expr]                        time [-p] PIPELINE
+ times                              trap [-lp] [arg signal_spec ...]
+ true                               type [-afptP] name [name ...]
+ typeset [-afFirtx] [-p] name[=valu ulimit [-SHacdfilmnpqstuvx] [limit
+ umask [-p] [-S] [mode]             unalias [-a] name [name ...]
+ unset [-f] [-v] [name ...]         until COMMANDS; do COMMANDS; done
+ variables - Some variable names an wait [n]
+ while COMMANDS; do COMMANDS; done  { COMMANDS ; }
+bash-3.2$ logout
+bash: logout: not login shell: use `exit'
+bash-3.2$ exi
+bash: exi: command not found
+bash-3.2$ exit
+exit
+
+Script done, output file is logs_for_handle_largefile_problem.txt
+ZhangBoyuansMBP:TaxiTripDurationPredict zhangboyuan$ 
