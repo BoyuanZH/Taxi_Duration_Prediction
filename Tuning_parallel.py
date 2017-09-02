@@ -6,6 +6,8 @@ import os
 import datetime as dt
 import seaborn as sns
 import random
+import multiprocessing as mp;
+from ast import literal_eval
 
 T0 = dt.datetime.now()
 
@@ -281,7 +283,24 @@ xgb_param = {'min_child_weight': 50,
 #t1 = dt.datetime.now()
 #print("Grid Search 1 costs {} seconds".format((t1-t0).seconds))
 
-def xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, early_stopping_rounds = 10, num_boost_round = 250, verbose_eval = 20, random_sample = False):
+def train_unit(comb, xgb_param = xgb_param, dtrain = dtrain, watchlist=watchlist, early_stopping_rounds=10, num_boost_round=2000, verbose_eval=20):
+  print("Testing ...{}".format(comb))
+  t0 = dt.datetime.now()
+
+  xgb_param.update(comb)
+  xgb_model = xgb.train(xgb_param, 
+                        dtrain, 
+                        evals = watchlist,
+                        early_stopping_rounds = early_stopping_rounds,
+                        num_boost_round = num_boost_round,
+                        verbose_eval = verbose_eval)
+  t1 = dt.datetime.now(); 
+  print("Done Test: {0}. \n     Time: {1:.1f} min".format(comb, (t1-t0).seconds/60))
+  return [str(comb), xgb_model.best_score]
+
+
+def xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, random_sample = False):
+
     def translate(param_grid):
         '''
         type: dict: {'f1': [v1, v2, v3], 'f2': [v4, v5]}
@@ -292,53 +311,46 @@ def xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, early_stopping_roun
         values = list(param_grid.values())
         comb_list = [dict(zip(features, i)) for i in list(product(*values))]
         return comb_list
-    
+
+  
     comb_list = translate(param_grid)
     if random_sample:
         comb_list = random.sample(comb_list, len(comb_list)//3)
-        
     random.shuffle(comb_list)
-    scores = []
-    i = 0
+
     print("GridSearch Required Tests: {}. ".format(len(comb_list)), "\nStart......")
     T0 = dt.datetime.now()
-    for comb in comb_list:
-        i += 1; print("Testing {}th test...{}".format(i, comb))
-        t0 = dt.datetime.now()
-        xgb_param.update(comb)
-        xgb_model = xgb.train(xgb_param, 
-                              dtrain, 
-                              evals = watchlist,
-                              early_stopping_rounds = early_stopping_rounds,
-                              num_boost_round = num_boost_round,
-                              verbose_eval = verbose_eval)
-        t1 = dt.datetime.now(); print("Done. {0:.1f} min".format((t1-t0).seconds/60))
-        scores.append(xgb_model.best_score)
-    T1 = dt.datetime.now(); print("Complete teseting. Score: {0:.3f}. Time: {0:.1f} min".format(xgb_model.best_score, (T1-T0).seconds/60))
-    return dict(zip(map(str, comb_list), scores))
+
+    pool = mp.Pool(mp.cpu_count())
+    result = pool.map(train_unit, comb_list)
+
+    T1 = dt.datetime.now(); print("Complete teseting. Time: {0:.1f} min".format((T1-T0).seconds/60))
+    return result
 
 ##### test_xgb_gridsearch()
-param_grid = {"eta": [0.05],
-              'min_child_weight': [5, 10], 
-              "max_depth": [20, 30], 
-              "colsample_bytree": [1]}
+param_grid = {"eta": [0.01, 0.03, 0.05],
+              "min_child_weight": [15, 10], 
+              "max_depth": [15],
+              "lambda": [1],
+              "subsample": [0.5, 0.8, 1],
+              "colsample_bytree": [0.8, 1]}
 scores = xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, random_sample = False)
 
-search_result = pd.Series(scores).reset_index()
-search_result.columns = ["param", "score"]
-search_result.to_csv("search_result.csv", index = False)
+# search_result = pd.Series(scores).reset_index()
+# search_result.columns = ["param", "score"]
+# search_result.to_csv("search_result.csv", index = False)
 
-def score2df(scores):
-    '''
-    type: pd.DataFrame[param: [str({"a":1, "b":2}), str({"a":1, "b":2})], score = [0.3, 0.4]]
-    rtype: pd.DataFrame[columns: param + score]
-    '''
-    from ast import literal_eval
-    scores['param_dict'] = list(map(literal_eval, scores['param']))
-    for key in scores['param_dict'][0].keys():
-        scores[key] = list(map(lambda x: x[key], scores['param_dict']))
-    scores.drop("param_dict", axis = 1)
-    return scores
+# def score2df(scores):
+#     '''
+#     type: pd.DataFrame[param: [str({"a":1, "b":2}), str({"a":1, "b":2})], score = [0.3, 0.4]]
+#     rtype: pd.DataFrame[columns: param + score]
+#     '''
+#     from ast import literal_eval
+#     scores['param_dict'] = list(map(literal_eval, scores['param']))
+#     for key in scores['param_dict'][0].keys():
+#         scores[key] = list(map(lambda x: x[key], scores['param_dict']))
+#     scores.drop("param_dict", axis = 1)
+#     return scores
 
 
 

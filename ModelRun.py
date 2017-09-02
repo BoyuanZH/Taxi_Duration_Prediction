@@ -235,7 +235,7 @@ sns.distplot(yvalid, ax = axes, label = "valid", color = "green")
 sns.distplot(ytest, ax = axes, label = "test", color = "red")
 axes.legend(loc = 0)
 
-#test[["id", "trip_duration"]].to_csv("xgb_submission.csv.gz", index = False, compression = "gzip")
+test[["id", "trip_duration"]].to_csv("xgb_submission.csv.gz", index = False, compression = "gzip")
 
 
 ## Plot the xgboost feature importance barplot.

@@ -27,7 +27,7 @@ d = {str({'a': 1, 'b': 1}): 0.38, str({'a': 2, 'b': 2}): 0.48, str({'a': 3, 'b':
 import pandas as pd;
 a = pd.Series(d).sort_values(ascending = False).reset_index()
 a.columns = ['param', 'score']
-def to_df(scores):
+def score2df(scores):
     '''
     type: pd.DataFrame[param: [{"a":1, "b":2}, {"a":1, "b":2}], score = [0.3, 0.4]]
     rtype: pd.DataFrame[columns: param + score]

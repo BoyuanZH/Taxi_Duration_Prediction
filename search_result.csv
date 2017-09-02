@@ -1,0 +1,5 @@
+param,score
+"{'eta': 0.05, 'colsample_bytree': 1, 'max_depth': 20, 'min_child_weight': 10}",0.379731
+"{'eta': 0.05, 'colsample_bytree': 1, 'max_depth': 20, 'min_child_weight': 5}",0.379928
+"{'eta': 0.05, 'colsample_bytree': 1, 'max_depth': 30, 'min_child_weight': 10}",0.382579
+"{'eta': 0.05, 'colsample_bytree': 1, 'max_depth': 30, 'min_child_weight': 5}",0.383691
