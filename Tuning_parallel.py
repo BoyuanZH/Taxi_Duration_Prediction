@@ -341,7 +341,7 @@ scores = xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, random_sample 
 
 search_result = pd.Series(dict(scores)).reset_index()
 search_result.columns = ["param", "score"]
-search_result.to_csv("search_result.csv", index = False)
+search_result.to_csv("search_result.csv" + str(dt.datetime.now()), index = False)
 
 def score2df(scores):
     '''
