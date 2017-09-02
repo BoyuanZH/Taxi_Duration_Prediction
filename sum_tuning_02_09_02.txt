@@ -32,3 +32,265 @@ Stopping. Best iteration:
 [1214]  train-rmse:0.322136     valid-rmse:0.379339
 
 Time: 569.0 min
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test on GCP 24-cpu instance: failed because no models folder exist: but record the outprint here:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Loading Data...Complete loading. Loading cost 7 seconds
+PCA costs time 1 second
+MiniBatchKMeans Clustering cost 6 seconds
+Loading OSRM Features cost 10 seconds
+We have 24 features.
+GridSearch Required Tests: 16.  
+Start......
+Testing ...{'colsample_bytree': 0.8, 'min_child_weight': 10, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}
+Testing ...{'colsample_bytree': 1, 'min_child_weight': 10, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}
+Testing ...{'colsample_bytree': 1, 'min_child_weight': 15, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}
+Testing ...{'colsample_bytree': 0.8, 'min_child_weight': 15, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}
+Testing ...{'colsample_bytree': 1, 'min_child_weight': 10, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}
+Testing ...{'colsample_bytree': 0.8, 'min_child_weight': 10, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}
+Testing ...{'colsample_bytree': 1, 'min_child_weight': 15, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}
+Testing ...{'colsample_bytree': 0.8, 'min_child_weight': 10, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}
+Testing ...{'colsample_bytree': 0.8, 'min_child_weight': 10, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}
+Testing ...{'colsample_bytree': 0.8, 'min_child_weight': 15, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}
+Testing ...{'colsample_bytree': 1, 'min_child_weight': 15, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}
+Testing ...{'colsample_bytree': 1, 'min_child_weight': 10, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}
+Testing ...{'colsample_bytree': 0.8, 'min_child_weight': 15, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}
+Testing ...{'colsample_bytree': 0.8, 'min_child_weight': 15, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}
+Testing ...{'colsample_bytree': 1, 'min_child_weight': 10, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}
+Testing ...{'colsample_bytree': 1, 'min_child_weight': 15, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}
+
+
+Will train until valid-rmse hasn't improved in 10 rounds.
+[20]    train-rmse:2.08675      valid-rmse:2.08964
+[20]    train-rmse:2.08608      valid-rmse:2.08921
+[20]    train-rmse:2.0866       valid-rmse:2.08956
+[20]    train-rmse:2.08623      valid-rmse:2.08925
+[20]    train-rmse:2.0852       valid-rmse:2.08864
+[20]    train-rmse:2.08537      valid-rmse:2.08862
+[20]    train-rmse:2.08463      valid-rmse:2.08834
+[20]    train-rmse:2.08484      valid-rmse:2.08833
+[20]    train-rmse:2.08585      valid-rmse:2.08914
+[20]    train-rmse:2.0851       valid-rmse:2.08836
+[20]    train-rmse:2.08489      valid-rmse:2.08846
+[20]    train-rmse:2.08637      valid-rmse:2.08949
+[20]    train-rmse:2.08458      valid-rmse:2.08821
+[20]    train-rmse:2.08435      valid-rmse:2.08815
+[20]    train-rmse:2.0865       valid-rmse:2.08946
+[20]    train-rmse:2.08602      valid-rmse:2.08913
+[40]    train-rmse:0.826471     valid-rmse:0.83728
+[40]    train-rmse:0.828966     valid-rmse:0.838071
+[40]    train-rmse:0.828157     valid-rmse:0.837851
+[40]    train-rmse:0.827403     valid-rmse:0.837286
+[40]    train-rmse:0.824057     valid-rmse:0.836412
+[40]    train-rmse:0.825135     valid-rmse:0.836334
+[40]    train-rmse:0.822113     valid-rmse:0.835872
+[40]    train-rmse:0.823456     valid-rmse:0.835731
+[40]    train-rmse:0.825841     valid-rmse:0.837563
+[40]    train-rmse:0.824514     valid-rmse:0.836113
+[40]    train-rmse:0.823224     valid-rmse:0.836259
+[40]    train-rmse:0.822864     valid-rmse:0.83585
+[40]    train-rmse:0.821541     valid-rmse:0.836051
+[40]    train-rmse:0.827515     valid-rmse:0.837914
+[40]    train-rmse:0.828329     valid-rmse:0.837924
+[40]    train-rmse:0.826887     valid-rmse:0.837373
+[60]    train-rmse:0.440306     valid-rmse:0.471695
+[60]    train-rmse:0.446995     valid-rmse:0.472395
+[60]    train-rmse:0.44405      valid-rmse:0.471963
+[60]    train-rmse:0.443886     valid-rmse:0.471806
+[60]    train-rmse:0.437461     valid-rmse:0.470761
+[60]    train-rmse:0.44099      valid-rmse:0.470486
+[60]    train-rmse:0.43316      valid-rmse:0.470524
+[60]    train-rmse:0.437431     valid-rmse:0.470065
+[60]    train-rmse:0.439888     valid-rmse:0.470668
+[60]    train-rmse:0.438872     valid-rmse:0.472339
+[60]    train-rmse:0.435936     valid-rmse:0.470824
+[60]    train-rmse:0.431914     valid-rmse:0.470913
+[60]    train-rmse:0.436191     valid-rmse:0.47064
+[60]    train-rmse:0.442849     valid-rmse:0.472377
+[60]    train-rmse:0.446067     valid-rmse:0.47245
+[60]    train-rmse:0.44244      valid-rmse:0.47198
+[80]    train-rmse:0.34506      valid-rmse:0.396613
+[80]    train-rmse:0.356805     valid-rmse:0.397115
+[80]    train-rmse:0.345192     valid-rmse:0.396606
+[80]    train-rmse:0.351543     valid-rmse:0.3966
+[80]    train-rmse:0.351008     valid-rmse:0.396741
+[80]    train-rmse:0.351425     valid-rmse:0.396264
+[80]    train-rmse:0.338255     valid-rmse:0.396236
+[80]    train-rmse:0.345189     valid-rmse:0.395698
+[80]    train-rmse:0.35045      valid-rmse:0.396652
+[80]    train-rmse:0.344053     valid-rmse:0.396708
+[80]    train-rmse:0.344122     valid-rmse:0.397474
+[80]    train-rmse:0.337538     valid-rmse:0.397065
+[80]    train-rmse:0.344575     valid-rmse:0.396817
+[100]   train-rmse:0.319895     valid-rmse:0.38408
+[80]    train-rmse:0.350604     valid-rmse:0.397373
+[100]   train-rmse:0.335114     valid-rmse:0.384352
+[80]    train-rmse:0.355925     valid-rmse:0.397485
+[100]   train-rmse:0.322207     valid-rmse:0.384399
+[100]   train-rmse:0.328006     valid-rmse:0.383865
+[100]   train-rmse:0.328416     valid-rmse:0.384223
+[80]    train-rmse:0.350381     valid-rmse:0.397247
+[100]   train-rmse:0.330137     valid-rmse:0.384033
+[100]   train-rmse:0.314124     valid-rmse:0.384182
+[100]   train-rmse:0.322864     valid-rmse:0.38351
+[100]   train-rmse:0.329344     valid-rmse:0.384454
+[120]   train-rmse:0.308686     valid-rmse:0.381346
+[100]   train-rmse:0.322092     valid-rmse:0.384679
+[100]   train-rmse:0.319297     valid-rmse:0.384899
+[100]   train-rmse:0.322131     valid-rmse:0.384795
+[120]   train-rmse:0.326314     valid-rmse:0.381546
+[100]   train-rmse:0.313531     valid-rmse:0.385078
+[120]   train-rmse:0.312604     valid-rmse:0.381721
+[120]   train-rmse:0.317968     valid-rmse:0.381134
+[120]   train-rmse:0.318401     valid-rmse:0.381369
+[120]   train-rmse:0.321944     valid-rmse:0.381451
+[100]   train-rmse:0.327582     valid-rmse:0.384809
+[120]   train-rmse:0.30227      valid-rmse:0.3814
+[100]   train-rmse:0.334443     valid-rmse:0.384964
+[100]   train-rmse:0.327367     valid-rmse:0.384697
+[120]   train-rmse:0.312986     valid-rmse:0.38093
+[140]   train-rmse:0.299981     valid-rmse:0.380041
+[140]   train-rmse:0.32118      valid-rmse:0.380668
+[140]   train-rmse:0.305693     valid-rmse:0.380627
+[120]   train-rmse:0.320625     valid-rmse:0.38191
+[140]   train-rmse:0.311231     valid-rmse:0.380118
+[120]   train-rmse:0.312045     valid-rmse:0.381961
+[140]   train-rmse:0.311032     valid-rmse:0.380048
+[140]   train-rmse:0.31665      valid-rmse:0.380613
+[120]   train-rmse:0.307213     valid-rmse:0.381778
+[120]   train-rmse:0.311866     valid-rmse:0.381974
+[120]   train-rmse:0.302567     valid-rmse:0.382253
+[140]   train-rmse:0.29395      valid-rmse:0.380268
+[120]   train-rmse:0.316947     valid-rmse:0.381936
+[120]   train-rmse:0.325449     valid-rmse:0.382085
+[120]   train-rmse:0.316374     valid-rmse:0.381556
+[140]   train-rmse:0.306738     valid-rmse:0.379909
+[160]   train-rmse:0.294119     valid-rmse:0.379432
+[160]   train-rmse:0.317091     valid-rmse:0.380062
+[160]   train-rmse:0.301196     valid-rmse:0.380065
+[160]   train-rmse:0.305794     valid-rmse:0.379414
+[160]   train-rmse:0.305573     valid-rmse:0.379432
+[160]   train-rmse:0.312566     valid-rmse:0.380004
+[140]   train-rmse:0.315433     valid-rmse:0.381008
+[140]   train-rmse:0.305456     valid-rmse:0.380765
+[160]   train-rmse:0.287632     valid-rmse:0.37967
+[140]   train-rmse:0.299024     valid-rmse:0.380549
+[140]   train-rmse:0.305173     valid-rmse:0.380917
+[140]   train-rmse:0.294646     valid-rmse:0.381222
+[140]   train-rmse:0.310168     valid-rmse:0.380656
+[180]   train-rmse:0.288859     valid-rmse:0.37888
+[140]   train-rmse:0.319876     valid-rmse:0.381015
+[160]   train-rmse:0.301456     valid-rmse:0.379314
+[180]   train-rmse:0.31401      valid-rmse:0.379789
+[180]   train-rmse:0.296823     valid-rmse:0.379721
+[140]   train-rmse:0.309511     valid-rmse:0.380477
+[180]   train-rmse:0.301081     valid-rmse:0.378934
+[180]   train-rmse:0.308969     valid-rmse:0.379756
+[180]   train-rmse:0.301145     valid-rmse:0.378982
+[160]   train-rmse:0.310674     valid-rmse:0.380317
+[180]   train-rmse:0.282465     valid-rmse:0.379238
+[160]   train-rmse:0.299896     valid-rmse:0.38004
+[160]   train-rmse:0.293267     valid-rmse:0.379916
+[160]   train-rmse:0.30002      valid-rmse:0.380315
+[160]   train-rmse:0.289019     valid-rmse:0.380738
+[200]   train-rmse:0.284288     valid-rmse:0.378477
+[200]   train-rmse:0.311        valid-rmse:0.379518
+[160]   train-rmse:0.304132     valid-rmse:0.379891
+[200]   train-rmse:0.292631     valid-rmse:0.379357
+[180]   train-rmse:0.297214     valid-rmse:0.378869
+[160]   train-rmse:0.315028     valid-rmse:0.380396
+[200]   train-rmse:0.297548     valid-rmse:0.378698
+[200]   train-rmse:0.30578      valid-rmse:0.379372
+[200]   train-rmse:0.296778     valid-rmse:0.378537
+[160]   train-rmse:0.304097     valid-rmse:0.37976
+[180]   train-rmse:0.307866     valid-rmse:0.380071
+[200]   train-rmse:0.278348     valid-rmse:0.378926
+[180]   train-rmse:0.295589     valid-rmse:0.379709
+[180]   train-rmse:0.296387     valid-rmse:0.379965
+[180]   train-rmse:0.288562     valid-rmse:0.37953
+[180]   train-rmse:0.284475     valid-rmse:0.38029
+[220]   train-rmse:0.280649     valid-rmse:0.378177
+[220]   train-rmse:0.308085     valid-rmse:0.379292
+[220]   train-rmse:0.289121     valid-rmse:0.379108
+[200]   train-rmse:0.293508     valid-rmse:0.378509
+[220]   train-rmse:0.303267     valid-rmse:0.379185
+[180]   train-rmse:0.30033      valid-rmse:0.379567
+[220]   train-rmse:0.294141     valid-rmse:0.37843
+[220]   train-rmse:0.29358      valid-rmse:0.378401
+[180]   train-rmse:0.311817     valid-rmse:0.380059
+[220]   train-rmse:0.274178     valid-rmse:0.378588
+[200]   train-rmse:0.305235     valid-rmse:0.379835
+[180]   train-rmse:0.300075     valid-rmse:0.379374
+[200]   train-rmse:0.291969     valid-rmse:0.379463
+[240]   train-rmse:0.277461     valid-rmse:0.377999
+[240]   train-rmse:0.305699     valid-rmse:0.37904
+[200]   train-rmse:0.292696     valid-rmse:0.379577
+[200]   train-rmse:0.284455     valid-rmse:0.379215
+[200]   train-rmse:0.280295     valid-rmse:0.379948
+[240]   train-rmse:0.285783     valid-rmse:0.378904
+[240]   train-rmse:0.300671     valid-rmse:0.379018
+[240]   train-rmse:0.290538     valid-rmse:0.378124
+[220]   train-rmse:0.290117     valid-rmse:0.378208
+[240]   train-rmse:0.290343     valid-rmse:0.378135
+[200]   train-rmse:0.295884     valid-rmse:0.379113
+[200]   train-rmse:0.308832     valid-rmse:0.379752
+[240]   train-rmse:0.271161     valid-rmse:0.378426
+[220]   train-rmse:0.302166     valid-rmse:0.379538
+[260]   train-rmse:0.274905     valid-rmse:0.377787
+[260]   train-rmse:0.302873     valid-rmse:0.378752
+[200]   train-rmse:0.296778     valid-rmse:0.379068
+[220]   train-rmse:0.287959     valid-rmse:0.379182
+[260]   train-rmse:0.282961     valid-rmse:0.378741
+[220]   train-rmse:0.289309     valid-rmse:0.379316
+[220]   train-rmse:0.281588     valid-rmse:0.37901
+[260]   train-rmse:0.298039     valid-rmse:0.378827
+[220]   train-rmse:0.27659      valid-rmse:0.379733
+[260]   train-rmse:0.287494     valid-rmse:0.377893
+[260]   train-rmse:0.287823     valid-rmse:0.377955
+[240]   train-rmse:0.287215     valid-rmse:0.378046
+[260]   train-rmse:0.268553     valid-rmse:0.378353
+[220]   train-rmse:0.292329     valid-rmse:0.378829
+[280]   train-rmse:0.272527     valid-rmse:0.37762
+[240]   train-rmse:0.299795     valid-rmse:0.37934
+[220]   train-rmse:0.306337     valid-rmse:0.379594
+[280]   train-rmse:0.300361     valid-rmse:0.378535
+[280]   train-rmse:0.280257     valid-rmse:0.378552
+[280]   train-rmse:0.295913     valid-rmse:0.378635
+[240]   train-rmse:0.284776     valid-rmse:0.37905
+[220]   train-rmse:0.293902     valid-rmse:0.378835
+[280]   train-rmse:0.284631     valid-rmse:0.377703
+[240]   train-rmse:0.286051     valid-rmse:0.379114
+[240]   train-rmse:0.278509     valid-rmse:0.378799
+[280]   train-rmse:0.285841     valid-rmse:0.377798
+[240]   train-rmse:0.273568     valid-rmse:0.379548
+[260]   train-rmse:0.284571     valid-rmse:0.377826
+[280]   train-rmse:0.266189     valid-rmse:0.378274
+[300]   train-rmse:0.270336     valid-rmse:0.377497
+[240]   train-rmse:0.289256     valid-rmse:0.378701
+[300]   train-rmse:0.298603     valid-rmse:0.378445
+[260]   train-rmse:0.297132     valid-rmse:0.379203
+[300]   train-rmse:0.277588     valid-rmse:0.378453
+[240]   train-rmse:0.303635     valid-rmse:0.379371
+[300]   train-rmse:0.293651     valid-rmse:0.378518
+[300]   train-rmse:0.282325     valid-rmse:0.377657
+[260]   train-rmse:0.281869     valid-rmse:0.378895
+[300]   train-rmse:0.283778     valid-rmse:0.377642
+[260]   train-rmse:0.283531     valid-rmse:0.378967
+[260]   train-rmse:0.275727     valid-rmse:0.37864
+[260]   train-rmse:0.270858     valid-rmse:0.37943
+[240]   train-rmse:0.290892     valid-rmse:0.378627
+[280]   train-rmse:0.282029     valid-rmse:0.377692
+[320]   train-rmse:0.268206     valid-rmse:0.377422
+[300]   train-rmse:0.263731     valid-rmse:0.378162
+[320]   train-rmse:0.296957     valid-rmse:0.378384
+[320]   train-rmse:0.275363     valid-rmse:0.378424
+Stopping. Best iteration:
+[305]   train-rmse:0.281705     valid-rmse:0.377601
+
+
+
+############# I got stcked on the hyperparameter tuning, need further feature engineering.
