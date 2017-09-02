@@ -8,6 +8,7 @@ import seaborn as sns
 import random
 import multiprocessing as mp;
 from ast import literal_eval
+import pickle
 
 T0 = dt.datetime.now()
 
@@ -295,6 +296,7 @@ def train_unit(comb, xgb_param = xgb_param, dtrain = dtrain, watchlist=watchlist
                         num_boost_round = num_boost_round,
                         verbose_eval = verbose_eval)
   t1 = dt.datetime.now(); 
+  xgb_model.save_model(os.path.join("models", str(comb) + ".model"))
   print("Done Test: {0}. \n     Time: {1:.1f} min".format(comb, (t1-t0).seconds/60))
   return [str(comb), xgb_model.best_score]
 
@@ -328,11 +330,12 @@ def xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, random_sample = Fal
     return result
 
 ##### test_xgb_gridsearch()
-param_grid = {"eta": [0.01, 0.03, 0.05],
-              "min_child_weight": [15, 10], 
+param_grid = {"eta": [0.05],
+              "min_child_weight": [10, 15], 
               "max_depth": [15],
-              "lambda": [1],
-              "subsample": [0.5, 0.8, 1],
+              "lambda": [1, 2],
+              "gamma": [0],
+              "subsample": [0.8, 1],
               "colsample_bytree": [0.8, 1]}
 scores = xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, random_sample = False)
 
