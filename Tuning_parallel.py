@@ -284,7 +284,7 @@ xgb_param = {'min_child_weight': 50,
 #t1 = dt.datetime.now()
 #print("Grid Search 1 costs {} seconds".format((t1-t0).seconds))
 
-def train_unit(comb, xgb_param = xgb_param, dtrain = dtrain, watchlist=watchlist, early_stopping_rounds=10, num_boost_round=2000, verbose_eval=20):
+def train_unit(comb, xgb_param = xgb_param, dtrain = dtrain, watchlist=watchlist, early_stopping_rounds=10, num_boost_round=10, verbose_eval=20):
   print("Testing ...{}".format(comb))
   t0 = dt.datetime.now()
 
@@ -339,21 +339,23 @@ param_grid = {"eta": [0.05],
               "colsample_bytree": [0.8, 1]}
 scores = xgb_gridsearch(param_grid, xgb_param, dtrain, watchlist, random_sample = False)
 
-# search_result = pd.Series(scores).reset_index()
-# search_result.columns = ["param", "score"]
-# search_result.to_csv("search_result.csv", index = False)
+search_result = pd.Series(dict(scores)).reset_index()
+search_result.columns = ["param", "score"]
+search_result.to_csv("search_result.csv", index = False)
 
-# def score2df(scores):
-#     '''
-#     type: pd.DataFrame[param: [str({"a":1, "b":2}), str({"a":1, "b":2})], score = [0.3, 0.4]]
-#     rtype: pd.DataFrame[columns: param + score]
-#     '''
-#     from ast import literal_eval
-#     scores['param_dict'] = list(map(literal_eval, scores['param']))
-#     for key in scores['param_dict'][0].keys():
-#         scores[key] = list(map(lambda x: x[key], scores['param_dict']))
-#     scores.drop("param_dict", axis = 1)
-#     return scores
+def score2df(scores):
+    '''
+    type: pd.DataFrame[param: [str({"a":1, "b":2}), str({"a":1, "b":2})], score = [0.3, 0.4]]
+    rtype: pd.DataFrame[columns: param + score]
+    '''
+    from ast import literal_eval
+    scores['param_dict'] = list(map(literal_eval, scores['param']))
+    for key in scores['param_dict'][0].keys():
+        scores[key] = list(map(lambda x: x[key], scores['param_dict']))
+    scores.drop("param_dict", axis = 1)
+    return scores
+
+
 
 
 
