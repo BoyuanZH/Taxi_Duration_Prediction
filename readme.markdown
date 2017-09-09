@@ -21,4 +21,4 @@ Contents:
     
 5. `setup.sh`
     
-    Scripts for setting up linus (Ubuntu) environment for XGBoost.
+    Scripts for setting up linux (Ubuntu) environment for XGBoost.
