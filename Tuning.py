@@ -88,12 +88,29 @@ test["manhattan_distance"] = manhattan_distance(test.pickup_latitude.values, tes
 test["bearing"] = bearing(test.pickup_latitude.values, test.pickup_longitude.values,
                            test.dropoff_latitude.values, test.dropoff_longitude.values)
 
+## add in center latitude/longitude
+train.loc[:, 'center_latitude'] = (train['pickup_latitude'].values + train['dropoff_latitude'].values) / 2
+train.loc[:, 'center_longitude'] = (train['pickup_longitude'].values + train['dropoff_longitude'].values) / 2
+test.loc[:, 'center_latitude'] = (test['pickup_latitude'].values + test['dropoff_latitude'].values) / 2
+test.loc[:, 'center_longitude'] = (test['pickup_longitude'].values + test['dropoff_longitude'].values) / 2
+
+### I don't trust this pca_manhattan, but why not?
+train['pca_manhattan'] = np.abs(train['dropoff_pca1'] - train['pickup_pca1']) + np.abs(train['dropoff_pca0'] - train['pickup_pca0'])
+test['pca_manhattan'] = np.abs(test['dropoff_pca1'] - test['pickup_pca1']) + np.abs(test['dropoff_pca0'] - test['pickup_pca0'])
+
+
 
 # datetime features
 train["pickup_weekday"] = train.pickup_datetime.dt.weekday
 train["pickup_hour"] = train.pickup_datetime.dt.hour
+train["pickup_week_of_year"] = train.pickup_datetime.dt.weekofyear
+train['pickup_week_hour'] = train['pickup_weekday'] * 24 + train['pickup_hour']
+train['pickup_dayofyear'] = train['pickup_datetime'].dt.dayofyear
 test["pickup_weekday"] = test.pickup_datetime.dt.weekday
 test["pickup_hour"] = test.pickup_datetime.dt.hour
+test["pickup_week_of_year"] = test.pickup_datetime.dt.weekofyear
+test['pickup_week_hour'] = test['pickup_weekday'] * 24 + test['pickup_hour']
+test['pickup_dayofyear'] = test['pickup_datetime'].dt.dayofyear
      
 ########### clustering.
 ## Q: what is the best clustering approach for spacial data.

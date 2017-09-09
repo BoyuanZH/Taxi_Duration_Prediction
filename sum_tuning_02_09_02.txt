@@ -294,3 +294,70 @@ Stopping. Best iteration:
 
 
 ############# I got stcked on the hyperparameter tuning, need further feature engineering.
+########################################### following result com from grid search 0903 from GCP 24 cpu instance, with 30 features.
+Stopping. Best iteration:
+[419]   train-rmse:0.249486     valid-rmse:0.369457
+
+Done Test: {'colsample_bytree': 0.8, 'min_child_weight': 15, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}. 
+     Time: 289.0 min
+
+Stopping. Best iteration:
+[475]   train-rmse:0.237282     valid-rmse:0.369524
+
+Done Test: {'colsample_bytree': 0.8, 'min_child_weight': 10, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}. 
+     Time: 344.0 min
+[400]   train-rmse:0.253917     valid-rmse:0.369929
+[520]   train-rmse:0.245717     valid-rmse:0.368521
+[540]   train-rmse:0.249915     valid-rmse:0.369329
+[440]   train-rmse:0.258746     valid-rmse:0.370585
+[420]   train-rmse:0.245164     valid-rmse:0.369794
+[440]   train-rmse:0.246951     valid-rmse:0.370675
+[540]   train-rmse:0.252601     valid-rmse:0.368881
+[440]   train-rmse:0.261516     valid-rmse:0.370081
+[540]   train-rmse:0.222852     valid-rmse:0.369239
+[540]   train-rmse:0.227899     valid-rmse:0.36864
+Stopping. Best iteration:
+[433]   train-rmse:0.262177     valid-rmse:0.370058
+
+Done Test: {'colsample_bytree': 1, 'min_child_weight': 15, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}. 
+     Time: 355.0 min
+Stopping. Best iteration:
+[708]   train-rmse:0.216145     valid-rmse:0.36829
+
+Done Test: {'colsample_bytree': 0.8, 'min_child_weight': 10, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}. 
+     Time: 413.0 min
+[540]   train-rmse:0.243618     valid-rmse:0.369371
+Stopping. Best iteration:
+[705]   train-rmse:0.220226     valid-rmse:0.368081
+
+Done Test: {'colsample_bytree': 0.8, 'min_child_weight': 10, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}. 
+     Time: 415.0 min
+[600]   train-rmse:0.243307     valid-rmse:0.369997
+[600]   train-rmse:0.223024     valid-rmse:0.369006
+[560]   train-rmse:0.242122     valid-rmse:0.369306
+[620]   train-rmse:0.242039     valid-rmse:0.369969
+Stopping. Best iteration:
+[603]   train-rmse:0.222764     valid-rmse:0.368995
+
+Done Test: {'colsample_bytree': 1, 'min_child_weight': 10, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}. 
+     Time: 423.0 min
+Stopping. Best iteration:
+[560]   train-rmse:0.242122     valid-rmse:0.369306
+
+Done Test: {'colsample_bytree': 1, 'min_child_weight': 15, 'subsample': 1, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 2}. 
+     Time: 424.0 min
+[640]   train-rmse:0.24003      valid-rmse:0.369857
+[660]   train-rmse:0.238412     valid-rmse:0.369828
+[680]   train-rmse:0.236727     valid-rmse:0.369754
+[700]   train-rmse:0.235344     valid-rmse:0.369714
+[720]   train-rmse:0.233825     valid-rmse:0.369692
+[740]   train-rmse:0.232187     valid-rmse:0.369655
+[760]   train-rmse:0.23057      valid-rmse:0.369588
+[780]   train-rmse:0.229439     valid-rmse:0.369542
+[800]   train-rmse:0.228152     valid-rmse:0.369534
+Stopping. Best iteration:
+[790]   train-rmse:0.228805     valid-rmse:0.369517
+
+Done Test: {'colsample_bytree': 1, 'min_child_weight': 15, 'subsample': 0.8, 'eta': 0.05, 'max_depth': 15, 'gamma': 0, 'lambda': 1}. 
+     Time: 475.0 min
+Complete teseting. Time: 475.0 min
