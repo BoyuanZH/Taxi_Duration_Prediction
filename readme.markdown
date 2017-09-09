@@ -1,15 +1,24 @@
-- [Source for installing xgboost on ubuntu.](http://www.exegetic.biz/blog/2015/12/installing-xgboost-ubuntu/)
+This repo consists of python scripts and model information for my first Kaggle competition called "New York Taxi Trip Duration Prediction", which I participated 2017 summer.
 
-- [Replace file in bash.](https://stackoverflow.com/questions/12198844/replace-a-whole-file-with-another-file-in-bash)
+The repo is built in the purpose of maintaining codes and making deploying models on different machine relatively easy.
 
-- [Save all the terminal output to a file](https://unix.stackexchange.com/questions/200637/save-all-the-terminal-output-to-a-file)
+Contents:
 
-- [Apply gitignore on an existing repository already tracking large number of files](https://stackoverflow.com/questions/19663093/apply-gitignore-on-an-existing-repository-already-tracking-large-number-of-files)
-
-- [Changing a remote's URL](https://help.github.com/articles/changing-a-remote-s-url/)
-
-- [Adding an existing project to GitHub using the command line](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/)
-
-- [gsutil: Download an object from your bucket](https://cloud.google.com/storage/docs/quickstart-gsutil)
-
--  
+1. `eda.py`
+    
+     Scripts for Explotory Data Analysis and Feature Engineering.
+2. `ModelRun.py`
+     
+     Main scripts for training XGBoost model and output prediciton csv file.
+     
+3. `Tuning.py`
+     
+     Scripts for Hyper-parameter tuning, use traditional grid search k-fold cross validation function by scikit-learn package, as well as nested looping grid search.
+     
+4. `Tuning_parallel.py`
+    
+    Crafted grid search function enabling parallel processing on multi-core machine.
+    
+5. `setup.sh`
+    
+    Scripts for setting up linus (Ubuntu) environment for XGBoost.
