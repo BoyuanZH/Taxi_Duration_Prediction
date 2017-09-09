@@ -4,7 +4,7 @@ The repo is built in the purpose of maintaining codes and making deploying model
 
 Contents:
 
-1. `eda.py`
+1. `EDA.py`
     
      Scripts for Explotory Data Analysis and Feature Engineering.
 2. `ModelRun.py`
